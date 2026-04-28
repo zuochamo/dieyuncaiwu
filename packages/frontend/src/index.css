@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #f6f7fb;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ===== 17DZ-ish look & feel (local, controllable) ===== */
+:root {
+  --dz-orange: #ff8040;
+  --dz-orange-hover: #e15616;
+  --dz-blue: #185af5;
+  --dz-bg: #f4f6f9;
+}
+
+/* Generic 17DZ-like button styles (used via className) */
+.dui-btn-warning {
+  background: var(--dz-orange) !important;
+  border: 1px solid var(--dz-orange) !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+}
+.dui-btn-warning:hover {
+  background: var(--dz-orange-hover) !important;
+  border-color: var(--dz-orange-hover) !important;
+}
+
+.dui-btn-primary-bordered {
+  background: #fff !important;
+  border: 1px solid var(--dz-orange) !important;
+  color: var(--dz-orange) !important;
+  border-radius: 6px !important;
+}
+.dui-btn-primary-bordered:hover {
+  background: rgba(255, 128, 64, 0.08) !important;
+}
+
+/* Voucher list wrapper (fi-acc-doc / acd- prefix) */
+.fi-acc-doc-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.acd-nav-wrapper {
+  min-width: 100px;
+  position: sticky;
+  top: 88px;
+}
+.acd-view-el {
+  display: flex;
+}
+.acd-view-el:hover {
+  background: #f5f5f5;
+}
+.acd-break-label {
+  font-size: 12px !important;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* 顶部导航（仿官网：文字为主 + 橙色细下划线） */
+.top-bar {
+  background: #2f3440 !important;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.18);
+}
+.top-bar-title {
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 700;
+  font-size: 15px;
+}
+.top-bar-subtitle {
+  color: rgba(255, 255, 255, 0.55) !important;
+  font-size: 12px;
+}
+.top-bar .ant-menu-horizontal {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.78);
+}
+.top-bar-muted {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+.top-nav.ant-menu-horizontal {
+  line-height: 34px;
+  background: transparent;
+}
+.top-nav.ant-menu-horizontal > .ant-menu-item {
+  padding-inline: 10px;
+  margin-inline: 6px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.78);
+}
+.top-nav.ant-menu-horizontal > .ant-menu-item:hover {
+  color: #ff6a00;
+  background: rgba(255, 106, 0, 0.10);
+}
+.top-nav.ant-menu-horizontal > .ant-menu-item-selected {
+  color: #ff6a00;
+  background: rgba(255, 106, 0, 0.14);
+}
+/* 去掉下划线（选中态仅保留橙色文字 + 轻背景） */
+.top-nav.ant-menu-horizontal > .ant-menu-item::after {
+  border-bottom: none !important;
+}
+
+/* 左侧菜单更“雾白克制”一点 */
+.side-nav.ant-menu {
+  border-inline-end: none !important;
+}
+
+/* 凭证版式（记账凭证） */
+.voucher-paper {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+.voucher-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.90), rgba(246,247,251,0.75));
+}
+.voucher-toolbar .ant-btn {
+  border-radius: 8px;
+}
+.voucher-header {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.voucher-header .voucher-title {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.voucher-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(0,0,0,0.65);
+  font-size: 12px;
+}
+.voucher-grid {
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.voucher-grid table {
+  border-collapse: collapse;
+}
+.voucher-grid .ant-table-thead > tr > th {
+  background: #fafafa !important;
+  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+  font-weight: 600;
+}
+.voucher-grid .ant-table-tbody > tr > td {
+  border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+  vertical-align: top;
+}
+.voucher-amount {
+  display: flex;
+  align-items: center;
+}
+.voucher-amount-neg {
+  margin-right: 6px;
+  color: rgba(0,0,0,0.55);
+}
+.voucher-amount-grid {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  gap: 0;
+  width: 100%;
+  min-width: 352px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.voucher-amount-cell {
+  border-right: 1px solid rgba(0,0,0,0.10);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 44px;
+  padding: 4px 0;
+  background: #fff;
+}
+.voucher-amount-cell:last-child {
+  border-right: none;
+}
+.voucher-amount-digit {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-size: 18px;
+  line-height: 20px;
+  color: rgba(0,0,0,0.88);
+}
+.voucher-amount-unit {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(0,0,0,0.45);
+  line-height: 14px;
+}
+.voucher-total {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  background: #fafafa;
+}
+.voucher-total-label {
+  color: rgba(0,0,0,0.65);
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+/* Report rows */
+.row-warn td {
+  background: rgba(255, 128, 64, 0.10) !important;
+}
+.row-total td {
+  background: rgba(24, 90, 245, 0.06) !important;
+  font-weight: 600;
+}
+
+/* Balance sheet: show dense grid like 17DZ */
+.dz-report-grid .ant-table-container,
+.dz-report-grid .ant-table {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+.dz-report-grid .ant-table-thead > tr > th {
+  background: #f7f8fb !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+.dz-report-grid .ant-table-thead > tr > th,
+.dz-report-grid .ant-table-tbody > tr > td {
+  border-inline-end: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+.dz-report-grid .ant-table-tbody > tr > td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+.dz-report-grid .ant-table-thead th {
+  font-weight: 700;
+  text-align: center;
+}
+.dz-report-grid .ant-table-tbody td {
+  padding: 6px 8px !important;
+  font-variant-numeric: tabular-nums;
+}
+.dz-report-grid .ant-table-tbody td:nth-child(3),
+.dz-report-grid .ant-table-tbody td:nth-child(4),
+.dz-report-grid .ant-table-tbody td:nth-child(7),
+.dz-report-grid .ant-table-tbody td:nth-child(8) {
+  text-align: right;
+}
+
+@media print {
+  .top-bar, .side-nav, .voucher-toolbar { display: none !important; }
+  .ant-layout-header, .ant-layout-sider { display: none !important; }
+  .ant-layout-content { margin: 0 !important; box-shadow: none !important; }
+  body { background: #fff !important; }
+  .voucher-paper { border: none; border-radius: 0; }
+}
